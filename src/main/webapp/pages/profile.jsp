@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<% User user= (User) session.getAttribute("user"); %>
+<% User user= (User) session.getAttribute("ttg"); %>
 <%=user.getName()%>
 <%=user.getSurname()%>
 <%=user.getUsername()%>
@@ -19,5 +19,6 @@
 <%
     response.getWriter().println(user.getPassword());
 %>
+<a href="/logout">LOGOUT</a>
 </body>
 </html>

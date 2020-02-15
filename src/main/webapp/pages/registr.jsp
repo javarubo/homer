@@ -14,11 +14,12 @@
 
 <body>
 <%
-    if (request.getAttribute("abab")!=null){response.getWriter().println(request.getAttribute("abab"));}
+    if (request.getAttribute("abab")!=null){response.getWriter().println(request.getAttribute("abab")); }
+
+    if (request.getAttribute("ab")!=null){response.getWriter().println(request.getAttribute("ab")); }
+
 %>
-<%
-    if (request.getAttribute("abad")!=null){response.getWriter().println(request.getAttribute("abad"));}
-%>
+
 
 <h2>Registration Info</h2>
 

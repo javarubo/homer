@@ -13,6 +13,8 @@
 <body>
 <%
     if (request.getAttribute("abcd")!=null){response.getWriter().println(request.getAttribute("abcd"));}
+
+    if (request.getAttribute("abll")!=null){response.getWriter().println(request.getAttribute("abll"));}
 %>
 
 
@@ -23,6 +25,6 @@
     <input type="submit" name="Sign in">
 </form>
 
-<a href="registr.jsp">for registration</a>
+<a href="pages/registr.jsp">for registration</a>
 </body>
 </html>

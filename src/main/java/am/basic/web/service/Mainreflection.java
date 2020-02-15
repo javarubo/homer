@@ -9,6 +9,7 @@ public class Mainreflection {
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         Class clazz = Class.forName("am.basic.web.model.User");
         Object object = clazz.newInstance();
+
         Field field = clazz.getDeclaredField("name");
         field.setAccessible(true);
         field.set(object, "karen");
@@ -21,16 +22,7 @@ public class Mainreflection {
         Annotation annotation[]=fieldz.getDeclaredAnnotations();
             for ( Annotation annot:annotation) {
                 System.out.println(annot.annotationType());
-
             }
-
-
-
-
-
-
-
-
 
         }
 
@@ -38,3 +30,4 @@ public class Mainreflection {
 
     }
 }
+

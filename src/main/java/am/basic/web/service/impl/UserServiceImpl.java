@@ -23,8 +23,10 @@ public class UserServiceImpl implements UserService {
 
 
 
+
     @Override
     public UserRepository getUserRepository() {
+
         return userrepositoryimpl;
     }
 
@@ -35,6 +37,7 @@ public class UserServiceImpl implements UserService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

@@ -1,6 +1,12 @@
 package am.basic.web.model;
 
+
+
+import org.springframework.stereotype.Component;
+
+import javax.enterprise.inject.Model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,28 +14,29 @@ import java.util.List;
 @Entity
 @Table(name = "user", schema = "test")
 
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false,updatable = false)
     private long id;
-
+    @NotNull
     private String name;
-@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+/*@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 @JoinColumn(name = "user_id",referencedColumnName = "id")
-    private List<PhoneNumber> phoneNumber;
+    private List<PhoneNumber> phoneNumber;*/
     private String surname;
-
+    @NotNull
     private String username;
-
+    @NotNull
     private String password;
-
+    @NotNull
     private String code;
-
+    @NotNull
     private String age;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Card card;
+   /* @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Card card;*/
 
 
     public long getId() {
@@ -89,21 +96,21 @@ public class User {
         this.password = password;
     }
 
-    public Card getCard() {
+    /*public Card getCard() {
         return card;
     }
 
     public void setCard(Card card) {
         this.card = card;
     }
-
-    public List<PhoneNumber> getPhoneNumber() {
+*/
+   /* public List<PhoneNumber> getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(List<PhoneNumber> phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -16,8 +17,10 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.sql.SQLException;
 
+@Primary
 @Repository
 @Scope("singleton")
+
 public class Userrepositoryimpl implements UserRepository {
 
 
@@ -67,24 +70,19 @@ public class Userrepositoryimpl implements UserRepository {
 
     }
 
-    public User getByUsernameAndPassword(String username, String password) {
 
-        Session session = sessionFactory.openSession();
-        NativeQuery<User> query = session.createNativeQuery("SELECT * FROM user WHERE username = ? AND password = ? ");
-        query.setParameter(1, "username");
-        query.setParameter(2, "password");
+
+    @Transactional(readOnly = true)
+    public User getByUsernameAndPassword(String username, String password) throws SQLException {
+        NativeQuery<User> query = sessionFactory.getCurrentSession().createNativeQuery("SELECT * FROM user WHERE username = :username AND password=:password", User.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
         return query.uniqueResult();
-
-
     }
 
-    public User getByUsername(String username) {
-
-        Session session = sessionFactory.openSession();
-        NativeQuery<User> query = session.createNativeQuery("SELECT * FROM user WHERE username = ?", User.class);
-        query.setParameter(1, "username");
-        return query.uniqueResult();
-
+    @Override
+    public User getByUsername(String username) throws SQLException {
+        return null;
     }
 
     public User getById(long id) {
